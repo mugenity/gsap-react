@@ -22,6 +22,12 @@ img {
     height: 100vh;
     overflow-y: hidden;
 
+    @media only screen and (max-width: 1024px) {
+      height: auto;
+      overflow-y: auto;
+      flex-wrap: wrap;
+    }
+
     .text {
       width: 50%;
       height: 100vh;
@@ -29,12 +35,23 @@ img {
       display: flex;
       align-items: center;
 
+      @media only screen and (max-width: 1024px) {
+        width: 100%;
+        height: auto;
+        padding: 100px 40px 40px;
+      }
+
       h1 {
         font-size: 70px;
         line-height: 84px;
         font-weight: normal;
         color: #ffe63e;
         text-transform: uppercase;
+
+        @media only screen and (max-width: 480px) {
+          font-size: 42px;
+          line-height: 54px;
+        }
       }
 
       p {
@@ -43,6 +60,11 @@ img {
         text-transform: uppercase;
         margin-top: 15px;
         letter-spacing: 4px;
+
+        @media only screen and (max-width: 480px) {
+          font-size: 18px;
+          line-height: 28px;
+        }
       }
 
       .btn {
@@ -61,6 +83,12 @@ img {
         margin-top: 80px;
         overflow: hidden;
         transition: all ease 0.5s;
+
+        @media only screen and (max-width: 1024px) {
+          width: 200px;
+          height: 50px;
+          line-height: 50px;
+        }
 
         &:hover {
           font-weight: 700;
@@ -89,6 +117,12 @@ img {
         margin-top: 200px;
         position: absolute;
         bottom: 50px;
+
+        @media only screen and (max-width: 1024px) {
+          margin-top: 50px;
+          position: relative;
+          bottom: 0;
+        }
 
         a {
           position: relative;
@@ -133,12 +167,33 @@ img {
       display: flex;
       justify-content: space-between;
 
+      @media only screen and (max-width: 1024px) {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
       .img-stripe {
         width: calc(50% - 15px);
+
+        @media only screen and (max-width: 1024px) {
+          width: 100%;
+          animation: none !important;
+          display: flex;
+          max-width: 100%;
+          overflow-x: auto;
+          transform: translateY(0) !important;
+        }
       }
 
       .stripe1 {
+        -webkit-animation: stripe-one 60s ease 0s infinite;
         animation: stripe-one 60s ease 0s infinite;
+
+        &:hover {
+          -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+        }
       }
 
       @keyframes stripe-one {
@@ -149,6 +204,11 @@ img {
       .stripe2 {
         transform: translateY(-250%);
         animation: stripe-two 60s ease 0s infinite;
+
+        &:hover {
+          -webkit-animation-play-state: paused;
+          animation-play-state: paused;
+        }
       }
 
       @keyframes stripe-two {
@@ -161,6 +221,110 @@ img {
         width: 320px;
         height: 420px;
         margin: 15px;
+      }
+    }
+  }
+  .toggleBtn {
+    display: inline-block;
+    outline: none;
+    border: none;
+    width: 110px;
+    height: 90px;
+    padding: 22px 25px;
+    background-color: #ffe632;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border-bottom-right-radius: 90px;
+    cursor: pointer;
+
+    i {
+      position: absolute;
+      font-size: 23px;
+    }
+    .closeMenu {
+      opacity: 0;
+    }
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 0 0 100% 0;
+    background-color: #ffe63e;
+    z-index: 9;
+    transform: scale(0);
+    transform-origin: top left;
+
+    @media only screen and (max-width: 1024px) {
+      width: 80%;
+    }
+    @media only screen and (max-width: 575px) {
+      width: 100%;
+      height: 80%;
+    }
+    @media only screen and (max-width: 375px) {
+      height: 65%;
+    }
+
+    nav {
+      padding: 100px;
+      transition: all ease 0.5s;
+
+      @media only screen and (max-width: 480px) {
+        padding: 100px 60px;
+      }
+      @media only screen and (max-width: 375px) {
+        padding: 80px 50px;
+      }
+
+      ul {
+        padding-left: 0;
+
+        li {
+          list-style-type: none;
+          margin-bottom: 30px;
+
+          @media only screen and (max-width: 375px) {
+            margin-bottom: 15px;
+          }
+
+          a {
+            position: relative;
+            font-size: 40px;
+            font-weight: 700;
+            text-decoration: none;
+            color: #38444b;
+            letter-spacing: 8px;
+
+            @media only screen and (max-width: 575px) {
+              font-size: 25px;
+            }
+            @media only screen and (max-width: 375px) {
+              font-size: 20px;
+            }
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: -100%;
+              width: 0;
+              height: 3px;
+              background-color: #38444b;
+              transition: all ease 0.5s;
+            }
+
+            &:hover:before {
+              width: 100%;
+              left: 0;
+            }
+          }
+        }
       }
     }
   }
